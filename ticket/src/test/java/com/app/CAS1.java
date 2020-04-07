@@ -19,5 +19,6 @@ public class CAS1 {
 		atomicInteger.compareAndSet(0, 1);
 		System.out.println(atomicInteger.get());
 		atomicInteger.incrementAndGet();
+		System.out.println("第二次");
 	}
 }
