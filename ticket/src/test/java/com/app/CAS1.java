@@ -20,5 +20,6 @@ public class CAS1 {
 		System.out.println(atomicInteger.get());
 		atomicInteger.incrementAndGet();
 		System.out.println("第二次");
+		System.out.println("第二次");
 	}
 }
