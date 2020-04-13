@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
  */
 public interface IndexDao {
 	public void testDao();
+	public void testDao1(String args);
 }

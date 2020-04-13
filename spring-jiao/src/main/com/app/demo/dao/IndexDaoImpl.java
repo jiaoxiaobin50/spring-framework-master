@@ -16,4 +16,7 @@ public class IndexDaoImpl implements IndexDao{
 	public void testDao() {
 		System.out.println("daoImpl");
 	}
+	public void testDao1(String args) {
+		System.out.println("daoImpl1"+args);
+	}
 }

@@ -17,6 +17,5 @@ public class TestMain {
 		AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 		IndexDao indexDao = ac.getBean(IndexDao.class);
 		indexDao.testDao();
-		System.out.println(indexDao.hashCode());
 	}
 }
