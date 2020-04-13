@@ -49,6 +49,23 @@ public class UserAspectj {
 	public void afterReturning(){
 		System.out.println("afterReturning  ");
 	}
+	@AfterThrowing("pointCut()")
+	public void afterThrowing(){
+		System.out.println("afterThrowing  ");
+	}
 
+
+	@Pointcut("target(com.app.demo.dao.IndexDaoImpl)")
+	public void pointCutTarget(){
+		System.out.println("pointCutTarget ");
+	}
+	@Before("pointCutTarget()")
+	public void beforeThis(){
+		System.out.println("beforeTarget  ");
+	}
+	@After("pointCutTarget()")
+	public void afterThis(){
+		System.out.println("afterTarget  ");
+	}
 
 }
