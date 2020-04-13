@@ -1,11 +1,9 @@
 package com.app.demo.service;
 
 import com.app.demo.dao.IndexDao;
+import com.app.demo.dao.IndexDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * @ClassName:IndexServiceImpl
@@ -15,7 +13,6 @@ import javax.annotation.Resource;
  * @version:V1.0
  */
 @Service
-@Scope("prototype")
 public class IndexServiceImpl implements IndexService{
 
 	@Autowired

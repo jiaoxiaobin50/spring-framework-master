@@ -2,6 +2,8 @@ package com.app;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.stereotype.Component;
 
 /**
  * @ClassName:springScan
@@ -11,7 +13,8 @@ import org.springframework.context.annotation.Configuration;
  * @version:V1.0
  */
 @Configuration
-@ComponentScan("com.app")
+@ComponentScan("com.app.demo")
 // @ImportResource("classpath:spring.xml")
+@EnableAspectJAutoProxy
 public class AppConfig {
 }

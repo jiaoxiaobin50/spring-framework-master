@@ -1,5 +1,7 @@
 package com.app;
 
+import com.app.demo.annotation.UserAspectj;
+import com.app.demo.dao.IndexDao;
 import com.app.demo.dao.IndexDaoImpl;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -13,12 +15,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class TestMain {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
-		// IndexServiceImpl service = (IndexServiceImpl) ac.getBean("indexServiceImpl");
-		// service.testService();
-		// System.out.println("s0"+service.hashCode());
-		// IndexServiceImpl service1 = (IndexServiceImpl) ac.getBean("indexServiceImpl");
-		// service.testService();
-		// System.out.println("s1:"+service1.hashCode());
-		ac.getBean(IndexDaoImpl.class);
+		IndexDao indexDao = ac.getBean(IndexDao.class);
+		indexDao.testDao();
+		System.out.println(indexDao.hashCode());
 	}
 }

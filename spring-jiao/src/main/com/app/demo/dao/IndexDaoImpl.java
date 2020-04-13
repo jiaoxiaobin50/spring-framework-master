@@ -12,17 +12,8 @@ import org.springframework.stereotype.Component;
  * @version:V1.0
  */
 @Component
-@Scope("prototype")
-public class IndexDaoImpl implements IndexDao, InitializingBean {
-	public IndexDaoImpl() {
-		System.out.println("construct");
-	}
-
+public class IndexDaoImpl implements IndexDao{
 	public void testDao() {
 		System.out.println("daoImpl");
-	}
-
-	public void afterPropertiesSet() throws Exception {
-		System.out.println("init");
 	}
 }
