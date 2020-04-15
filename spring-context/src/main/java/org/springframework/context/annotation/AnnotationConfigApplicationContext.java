@@ -59,10 +59,16 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 
 
 	/**
+	 * 构造完beanFactory后，再初始化AnnotatedBeanDefinitionReader
+	 *
 	 * Create a new AnnotationConfigApplicationContext that needs to be populated
 	 * through {@link #register} calls and then manually {@linkplain #refresh refreshed}.
 	 */
 	public AnnotationConfigApplicationContext() {
+		// this当前AnnotationConfigApplicationContext对象
+		// GenericApplicationContext extends AbstractApplicationContext
+		// implements BeanDefinitionRegistry  AnnotationConfigApplicationContext 实现了BeanDefinitionRegistry接口
+		// 因此 this就是 BeanDefinitionRegistry的实现
 		this.reader = new AnnotatedBeanDefinitionReader(this);
 		this.scanner = new ClassPathBeanDefinitionScanner(this);
 	}

@@ -17,6 +17,7 @@
 package org.springframework.context.support;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
@@ -29,6 +30,7 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionCustomizer;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.RootBeanDefinition;
@@ -109,6 +111,8 @@ public class GenericApplicationContext extends AbstractApplicationContext implem
 	 * @see #refresh
 	 */
 	public GenericApplicationContext() {
+
+		// 实例化beanFactory DefaultListableBeanFactory
 		this.beanFactory = new DefaultListableBeanFactory();
 	}
 
@@ -266,6 +270,8 @@ public class GenericApplicationContext extends AbstractApplicationContext implem
 			throw new IllegalStateException(
 					"GenericApplicationContext does not support multiple refresh attempts: just call 'refresh' once");
 		}
+
+		// 设置此次容器的id,说明是代表这个工厂的唯一标识
 		this.beanFactory.setSerializationId(getId());
 	}
 
@@ -290,6 +296,8 @@ public class GenericApplicationContext extends AbstractApplicationContext implem
 	 */
 	@Override
 	public final ConfigurableListableBeanFactory getBeanFactory() {
+		// DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory
+		// implements ConfigurableListableBeanFactory, BeanDefinitionRegistry, Serializable
 		return this.beanFactory;
 	}
 

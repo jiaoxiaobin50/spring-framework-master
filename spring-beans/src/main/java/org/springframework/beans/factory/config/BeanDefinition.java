@@ -39,6 +39,9 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.beans.factory.support.ChildBeanDefinition
  */
 public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
+	// 接口可以多继承，因为都是抽象方法
+	// 类不可以多继承，不知道继承哪一个
+
 
 	/**
 	 * Scope identifier for the standard singleton scope: {@value}.
