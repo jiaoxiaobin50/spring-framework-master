@@ -118,12 +118,21 @@ class ConfigurationClassEnhancer {
 	 * Creates a new CGLIB {@link Enhancer} instance.
 	 */
 	private Enhancer newEnhancer(Class<?> configSuperClass, @Nullable ClassLoader classLoader) {
+		// 增强接口
 		Enhancer enhancer = new Enhancer();
+
+		// 当前类(appConfig:目标对象)作为父类，Cglib继承来增强作用
 		enhancer.setSuperclass(configSuperClass);
+
+		// EnhancedConfiguration  extends BeanFactoryAware
+		//
 		enhancer.setInterfaces(new Class<?>[] {EnhancedConfiguration.class});
 		enhancer.setUseFactory(false);
 		enhancer.setNamingPolicy(SpringNamingPolicy.INSTANCE);
+
+		// Cglib代理对象生成策略，上面setBeanFactory(当前spring环境)，然后beanFactory.getBean()-->代理对象
 		enhancer.setStrategy(new BeanFactoryAwareGeneratorStrategy(classLoader));
+
 		enhancer.setCallbackFilter(CALLBACK_FILTER);
 		enhancer.setCallbackTypes(CALLBACK_FILTER.getCallbackTypes());
 		return enhancer;

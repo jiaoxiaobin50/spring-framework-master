@@ -265,6 +265,9 @@ class ConfigurationClassParser {
 	protected final SourceClass doProcessConfigurationClass(
 			ConfigurationClass configClass, SourceClass sourceClass, Predicate<String> filter)
 			throws IOException {
+		// 处理注解的类
+
+
 
 		if (configClass.getMetadata().isAnnotated(Component.class.getName())) {
 			// Recursively process any member (nested) classes first
@@ -306,7 +309,12 @@ class ConfigurationClassParser {
 			}
 		}
 
+		// 上面处理了@Component注解的类
+
+
+		//处理了类是否加了@import注解
 		// Process any @Import annotations
+		// getImports(sourceClass)得到假import注解的类，并处理
 		processImports(configClass, sourceClass, getImports(sourceClass), filter, true);
 
 		// Process any @ImportResource annotations
@@ -577,8 +585,12 @@ class ConfigurationClassParser {
 							this.deferredImportSelectorHandler.handle(configClass, (DeferredImportSelector) selector);
 						}
 						else {
+
 							String[] importClassNames = selector.selectImports(currentSourceClass.getMetadata());
+
 							Collection<SourceClass> importSourceClasses = asSourceClasses(importClassNames, exclusionFilter);
+
+							// 递归处理？为什么递归处理
 							processImports(configClass, currentSourceClass, importSourceClasses, exclusionFilter, false);
 						}
 					}

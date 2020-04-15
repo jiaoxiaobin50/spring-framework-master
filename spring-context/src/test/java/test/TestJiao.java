@@ -1,6 +1,7 @@
 package test;
 
 import org.com.jiao.IndexDao;
+import org.com.jiao.JiaoBeanFactoryPostProcessor;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -27,7 +28,9 @@ public class TestJiao {
 		// ConfigurationClassParser.doProcessConfigurationClass这一步将包扫描到spring容器中
 		ac.refresh();
 
-		IndexDao dao = ac.getBean(IndexDao.class);
-		dao.test();
+		AppConfig appConfig = (AppConfig) ac.getBean("appConfig");
+
+		// IndexDao dao = ac.getBean(IndexDao.class);
+		// dao.test();
 	}
 }

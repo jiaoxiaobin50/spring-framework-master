@@ -507,7 +507,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				// 获取自定义的但是没有被spring容器扫描的后置处理器BeanPostProcessor
 				// 将一些基本的信息放入Map或者set或者list当中
 				// 解析扫描包下面的对象放入beanDefinition中
-				// 最开始是有五个bd，随后又加入一个appconfig再随后又加入包下的indexDao
+				// 最开始是有五个BeanPostProcessor还有一个BeanFactoryPostProcessor(ConfigurationClassPostProcessor)
+				// 随后又加入一个appconfig再随后又加入包下的indexDao
+				// 初始化各种注解的beanDefinition的定义
+
 				invokeBeanFactoryPostProcessors(beanFactory);
 
 				// Register bean processors that intercept bean creation.
@@ -628,11 +631,18 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 		// AppClassLoader 系统加载器，是负责加载classpath路径下的class类
 		beanFactory.setBeanClassLoader(getClassLoader());
+
+		// bean表达式处理器
 		beanFactory.setBeanExpressionResolver(new StandardBeanExpressionResolver(beanFactory.getBeanClassLoader()));
+
+		// 属性编辑器
 		beanFactory.addPropertyEditorRegistrar(new ResourceEditorRegistrar(this, getEnvironment()));
 
 		// Configure the bean factory with context callbacks.
+		// 后置处理器
 		beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
+
+
 		beanFactory.ignoreDependencyInterface(EnvironmentAware.class);
 		beanFactory.ignoreDependencyInterface(EmbeddedValueResolverAware.class);
 		beanFactory.ignoreDependencyInterface(ResourceLoaderAware.class);
