@@ -1,5 +1,7 @@
 package org.com.jiao;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @ClassName:IndexDao
  * @Descrition: TODO
@@ -7,7 +9,7 @@ package org.com.jiao;
  * @date:2020/04/14 23:30<br/>
  * @version:V1.0
  */
-// @Component
+@Component
 public class IndexDao{
 	public IndexDao() {
 		System.out.println("init====");

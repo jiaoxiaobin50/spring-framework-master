@@ -518,18 +518,24 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				registerBeanPostProcessors(beanFactory);
 
 				// Initialize message source for this context.
+
+				// 国际化，不重要
 				initMessageSource();
 
 				// Initialize event multicaster for this context.
+				// 事件处理
 				initApplicationEventMulticaster();
 
 				// Initialize other special beans in specific context subclasses.
+				// 空壳方法
 				onRefresh();
 
 				// Check for listener beans and register them.
+				// 对监听器操作
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
+				// 真正的实例化开始
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
@@ -867,6 +873,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		beanFactory.freezeConfiguration();
 
 		// Instantiate all remaining (non-lazy-init) singletons.
+		// 实例化单例之前要干的事
 		beanFactory.preInstantiateSingletons();
 	}
 

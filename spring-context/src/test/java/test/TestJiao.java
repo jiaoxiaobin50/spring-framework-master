@@ -18,7 +18,6 @@ public class TestJiao {
 		// GenericApplicationContext的构造器中实例化了beanFactory
 		AnnotationConfigApplicationContext ac =
 				new AnnotationConfigApplicationContext();
-
 		// 注册，把一个class转成beanDefinition 最后put到map
 		// 其实这里是将AppConfig注册而不是他的扫描到的类
 		ac.register(AppConfig.class);

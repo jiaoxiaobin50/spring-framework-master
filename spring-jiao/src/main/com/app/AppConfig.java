@@ -15,6 +15,6 @@ import org.springframework.stereotype.Component;
 @Configuration
 @ComponentScan("com.app.demo")
 // @ImportResource("classpath:spring.xml")
-// @EnableAspectJAutoProxy
+@EnableAspectJAutoProxy
 public class AppConfig {
 }

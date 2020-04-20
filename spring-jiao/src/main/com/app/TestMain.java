@@ -17,6 +17,7 @@ public class TestMain {
 		AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 		IndexDao indexDao = ac.getBean(IndexDao.class);
 		indexDao.testDao();
+		System.out.println(ac.getBean(AppConfig.class));
 
 		// 实现了默认的jdk切面就报错,要是gclib就不会报错 @EnableAspectJAutoProxy(proxyTargetClass=true)
 		// 因为生成了代理对象，和目标对象完全不一样，对目标对象进行了增强

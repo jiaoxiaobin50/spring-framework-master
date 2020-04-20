@@ -63,6 +63,11 @@ final class PostProcessorRegistrationDelegate {
 		// @Configuration 注解的后置处理器
 		Set<String> processedBeans = new HashSet<>();
 
+		//  DefaultListableBeanFactory 实现了 ConfigurableListableBeanFactory
+		// DefaultListableBeanFactory 也实现了 BeanDefinitionRegistry
+		// 归根到底beanFactory是最开始实例化出来的beanFactory,
+		// 在GenericApplicationContext的构造方法中实例化的
+		// DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory()
 		if (beanFactory instanceof BeanDefinitionRegistry) {
 			BeanDefinitionRegistry registry = (BeanDefinitionRegistry) beanFactory;
 
