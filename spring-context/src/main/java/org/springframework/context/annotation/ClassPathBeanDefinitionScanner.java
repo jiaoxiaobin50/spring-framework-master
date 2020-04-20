@@ -277,6 +277,7 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 			// 符合条件的转成BeanDefinition，此处应该只有IndexDao加了@Conponent注解
 			Set<BeanDefinition> candidates = findCandidateComponents(basePackage);
 
+
 			// 只有扫描到的
 			for (BeanDefinition candidate : candidates) {
 				ScopeMetadata scopeMetadata = this.scopeMetadataResolver.resolveScopeMetadata(candidate);
